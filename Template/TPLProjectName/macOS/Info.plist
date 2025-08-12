@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>apiNamespace</key>
+	<string>$(API_NAMESPACE)</string>
+	<key>apiBaseURL</key>
+	<string>$(API_BASE_URL)</string>
 	<key>databaseName</key>
 	<string>$(DATABASE_NAME)</string>
 	<key>databaseKey</key>
