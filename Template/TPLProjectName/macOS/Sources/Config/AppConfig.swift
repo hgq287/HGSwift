@@ -12,8 +12,8 @@ class AppConfig {
     private enum ConfigKeys {
         static let databaseName = "databaseName"
         static let databaseKey = "databaseKey"
-        
-        
+        static let apiBaseUrl = "apiBaseURL"
+        static let apiNamespace = "apiNamespace"
     }
 
     private static var infoDictionary: [String: Any]? = {
@@ -51,6 +51,14 @@ class AppConfig {
 
     static var databaseName: String? {
         return value(for: ConfigKeys.databaseName)
+    }
+    
+    static var apiBaseURL: String? {
+        return value(for: ConfigKeys.apiBaseUrl)
+    }
+    
+    static var apiNamespace: String? {
+        return value(for: ConfigKeys.apiNamespace)
     }
     
     static var databaseURL: URL? {
