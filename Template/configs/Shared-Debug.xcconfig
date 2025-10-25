@@ -1,1 +1,3 @@
 #include "Base.xcconfig"
+
+GENERATE_INFOPLIST_FILE = YES
