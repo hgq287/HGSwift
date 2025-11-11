@@ -9,6 +9,7 @@ import SwiftUI
 import Shared
 
 struct LoginView: View {
+    @EnvironmentObject var appstate: AppState
     @EnvironmentObject var authInteractor: AuthInteractor
 
     var body: some View {
@@ -43,8 +44,7 @@ struct LoginView: View {
         /// create views after login
         .onChange(of: authInteractor.isLoggedIn) { isLoggedIn in
             if isLoggedIn {
-                // Handle post-login actions, e.g., navigate to the main app view
-                print("User logged in successfully")
+                appstate.isLoggedIn = true
             }
         }
     }

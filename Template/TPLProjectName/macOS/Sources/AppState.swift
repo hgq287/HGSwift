@@ -11,17 +11,21 @@ import Shared
 
 public final class AppState: ObservableObject {
     
+    // MARK: - Login State
+    @Published var isLoggedIn: Bool = false
+    
     // MARK: - Core Managers & Models
     @Published public var dbManager: GRDBManager
-    
-    // MARK: - Interactors (Feature-specific logic)
-    @Published public var authInteractor: AuthInteractor
     
     // MARK: - Repositories (Data access layer)
     @Published public var authRepository: AuthRepositoryProtocol
     
     // MARK: - Services (Network, Database, etc.)
     @Published public var authService: AuthServiceProtocol
+    
+    // MARK: - Interactors (Feature-specific logic)
+    @Published public var authInteractor: AuthInteractor
+    @Published public var mainInteractor: MainInteractor = MainInteractor()
     
     // MARK: - Initializer
     public init() {
