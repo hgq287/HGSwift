@@ -20,6 +20,8 @@ targets:
       Release: configs/TPLProjectName-iOS-Release.xcconfig
     entitlements:
       path: TPLProjectName/iOS/TPLProjectName.entitlements
+    dependencies:
+      - target: Shared
     scheme:
       environmentVariables:
         ENABLE_SIGNPOST: YES
