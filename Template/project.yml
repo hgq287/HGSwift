@@ -22,6 +22,9 @@ targets:
       path: TPLProjectName/iOS/TPLProjectName.entitlements
     dependencies:
       - target: Shared
+    settings:
+      base:
+        INFOPLIST_FILE: TPLProjectName/iOS/Info.plist
     scheme:
       environmentVariables:
         ENABLE_SIGNPOST: YES
@@ -56,6 +59,9 @@ targets:
       Release: configs/Shared-Release.xcconfig
     dependencies:
       - target: TPLProjectNameCore
+    settings:
+      base:
+        SUPPORTED_PLATFORMS: "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator xros xrsimulator"
   TPLProjectNameCore:
     platform: macOS
     type: framework
@@ -67,6 +73,9 @@ targets:
     dependencies:
       - package: Alamofire
       - package: GRDB 
+    settings:
+      base:
+        SUPPORTED_PLATFORMS: "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator xros xrsimulator"
       
   #Test Targets
   TPLProjectName-macOSTests:

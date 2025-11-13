@@ -15,7 +15,7 @@ public final class AppState: ObservableObject {
     @Published var isLoggedIn: Bool = false
     
     // MARK: - Core Managers & Models
-    @Published public var dbManager: GRDBManager
+//    @Published public var dbManager: GRDBManager
     
     // MARK: - Repositories (Data access layer)
     @Published public var authRepository: AuthRepositoryProtocol
@@ -29,12 +29,12 @@ public final class AppState: ObservableObject {
     
     // MARK: - Initializer
     public init() {
-        let databaseURL = AppConfig.databaseURL!
-        let _sharedDBManager = GRDBManager.shared
-        _sharedDBManager.openDatabase(databaseURL: databaseURL)
-        _sharedDBManager.migrateDatabase()
-        
-        self.dbManager = _sharedDBManager
+//        let databaseURL = AppConfig.databaseURL!
+//        let _sharedDBManager = GRDBManager.shared
+//        _sharedDBManager.openDatabase(databaseURL: databaseURL)
+//        _sharedDBManager.migrateDatabase()
+//        
+//        self.dbManager = _sharedDBManager
         
         let _authService = AuthService()
         self.authService = _authService
