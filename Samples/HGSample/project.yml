@@ -1,0 +1,132 @@
+name: HGSample
+options:
+  minimumXcodeGenVersion: 2.42.0
+  createIntermediateGroups: true
+packages:
+  Alamofire:
+    url: https://github.com/Alamofire/Alamofire.git
+    majorVersion: 5.10.2
+  GRDB:
+    url: https://github.com/groue/GRDB.swift.git
+    branch: master
+targets:
+  HGSample-iOS:
+    platform: iOS 
+    type: application
+    sources:
+      - HGSample/iOS
+    configFiles:
+      Debug: configs/HGSample-iOS-Debug.xcconfig
+      Release: configs/HGSample-iOS-Release.xcconfig
+    entitlements:
+      path: HGSample/iOS/HGSample.entitlements
+    dependencies:
+      - target: Shared
+    settings:
+      base:
+        INFOPLIST_FILE: HGSample/iOS/Info.plist
+    scheme:
+      environmentVariables:
+        ENABLE_SIGNPOST: YES
+  #macOS application
+  HGSample-macOS:
+    platform: macOS
+    type: application
+    sources:
+      - HGSample/macOS
+    configFiles:
+      Debug: configs/HGSample-macOS-Debug.xcconfig
+      Release: configs/HGSample-macOS-Release.xcconfig
+    entitlements:
+      path: HGSample/macOS/HGSample.entitlements
+    settings:
+      base:
+        INFOPLIST_FILE: HGSample/macOS/Info.plist
+    dependencies:
+      - target: Shared
+    scheme:
+      environmentVariables:
+        ENABLE_SIGNPOST: YES
+
+  # Framework Targets
+  Shared:
+    platform: macOS
+    type: framework
+    sources:
+      - Shared
+    configFiles:
+      Debug: configs/Shared-Debug.xcconfig
+      Release: configs/Shared-Release.xcconfig
+    dependencies:
+      - target: HGSampleCore
+    settings:
+      base:
+        SUPPORTED_PLATFORMS: "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator xros xrsimulator"
+  HGSampleCore:
+    platform: macOS
+    type: framework
+    sources:
+      - HGSampleCore
+    configFiles:
+      Debug: configs/HGSampleCore-Debug.xcconfig
+      Release: configs/HGSampleCore-Release.xcconfig
+    dependencies:
+      - package: Alamofire
+      - package: GRDB 
+    settings:
+      base:
+        SUPPORTED_PLATFORMS: "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator xros xrsimulator"
+      
+  #Test Targets
+  HGSample-macOSTests:
+    platform: macOS
+    type: bundle.unit-test
+    configFiles:
+      Debug: configs/HGSample-macOSTests.xcconfig
+    sources:
+      - Tests/HGSample-macOSTests
+    dependencies:
+      - target: HGSample-macOS
+    scheme:
+      testTargets:
+        - HGSample-macOSTests
+      gatherCoverageData: true
+  HGSample-iOSTests:
+    platform: macOS
+    type: bundle.unit-test
+    configFiles:
+      Debug: configs/HGSample-iOSTests.xcconfig
+    sources:
+      - Tests/HGSample-iOSTests
+    dependencies:
+      - target: HGSample-iOS
+    scheme:
+      testTargets:
+        - HGSample-iOSTests
+      gatherCoverageData: true
+  SharedTests:
+    platform: macOS
+    type: bundle.unit-test
+    configFiles:
+      Debug: configs/SharedTests.xcconfig
+    sources:
+      - Tests/SharedTests
+    dependencies:
+      - target: Shared
+    scheme:
+      testTargets:
+        - SharedTests
+      gatherCoverageData: true
+  HGSampleCoreTests:
+    platform: macOS
+    type: bundle.unit-test
+    configFiles:
+      Debug: configs/HGSampleCoreTests.xcconfig
+    sources:
+      - Tests/HGSampleCoreTests
+    dependencies:
+      - target: HGSampleCore
+    scheme:
+      testTargets:
+        - HGSampleCoreTests
+      gatherCoverageData: true
