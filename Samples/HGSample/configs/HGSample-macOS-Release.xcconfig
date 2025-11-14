@@ -1,0 +1,9 @@
+#include "Base-macOS.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = com.hghabits.HGSample
+
+DATABASE_NAME = HGSample.sqlite
+DATABASE_KEY = test@123
+
+API_BASE_URL = http:/$()/localhost:4106
+API_NAMESPACE = v1
