@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools >= 64.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aimo"
+dynamic = ["version"]
+
+authors = [
+  {name = "Hg Q."},
+  {name = "Hg Q.", email = "hgq287@gmail.com"},
+]
+
+description = "Aimo - The utility tool for developers"
+readme = "README.md"
+requires-python = ">=3.10"
+
+[project.scripts]
+aimo = "aimo.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["aimo*"]
+exclude = ["tests", "tests.*", "user_data", "user_data*"]
+namespaces = true

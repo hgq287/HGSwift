@@ -1,0 +1,13 @@
+# Data handling & SQLite interaction
+pandas
+numpy
+
+# Machine Learning (Isolation Forest, etc.)
+scikit-learn==1.5.1
+
+# Model Conversion to Apple Core ML
+coremltools
+
+# Optional: Visualization for debugging your model
+matplotlib
+seaborn

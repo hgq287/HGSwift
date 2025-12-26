@@ -1,0 +1,13 @@
+[Unit]
+Description=Aimo Daemon
+After=network.target
+
+[Service]
+# Set WorkingDirectory and ExecStart to your file paths accordingly
+# NOTE: %h will be resolved to /home/<username>
+WorkingDirectory=%h/aimo
+ExecStart=/usr/bin/aimo start
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

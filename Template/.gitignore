@@ -18,3 +18,7 @@ xcuserdata/
 Carthage/
 
 .idea/
+
+# core_ai_model
+core_ai_model/__pycache__/*
+core_ai_model/.venv
