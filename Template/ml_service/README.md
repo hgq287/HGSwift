@@ -1,9 +1,9 @@
 # Setup Python virtual environment (virtualenv)
 
-You will run aimo in separated `virtual environment`
+You will run mls in separated `virtual environment`
 
 ```bash
-# create virtualenv in directory /hgtool/.venv
+# create virtualenv in directory /ml_service/.venv
 python3 -m venv .venv
 
 # run virtualenv
@@ -23,7 +23,7 @@ python3 -m pip install -e .
 
 # Usage 
 
-To create MLModel, simply run the following command:
+To create ml model, simply run the following command:
 ```bash
-aimo train
+mls train
 ```

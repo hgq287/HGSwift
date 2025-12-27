@@ -1,0 +1,38 @@
+Metadata-Version: 2.4
+Name: mls
+Version: 0.0.0
+Summary: Mls - The utility tool for developers
+Author: Hg Q.
+Author-email: "Hg Q." <hgq287@gmail.com>
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+
+# Setup Python virtual environment (virtualenv)
+
+You will run mls in separated `virtual environment`
+
+```bash
+# create virtualenv in directory /ml_service/.venv
+python3 -m venv .venv
+
+# run virtualenv
+source .venv/bin/activate
+
+# deactivate virtualenv
+deactivate
+```
+
+# Install python dependencies
+
+```bash
+python3 -m pip install --upgrade pip
+python3 -m pip install -r requirements.txt
+python3 -m pip install -e .
+```
+
+# Usage 
+
+To create ml model, simply run the following command:
+```bash
+mls train
+```

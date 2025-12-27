@@ -1,12 +1,12 @@
 [Unit]
-Description=Aimo Daemon
+Description=Mls Daemon
 After=network.target
 
 [Service]
 # Set WorkingDirectory and ExecStart to your file paths accordingly
 # NOTE: %h will be resolved to /home/<username>
-WorkingDirectory=%h/aimo
-ExecStart=/usr/bin/aimo start --sd-notify
+WorkingDirectory=%h/mls
+ExecStart=/usr/bin/mls start --sd-notify
 
 Restart=always
 #Restart=on-failure

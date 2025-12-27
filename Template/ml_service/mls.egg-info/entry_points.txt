@@ -1,0 +1,2 @@
+[console_scripts]
+mls = mls.main:main

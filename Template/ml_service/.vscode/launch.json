@@ -5,10 +5,10 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Python: Aimo Train",
+      "name": "Python: Mls Train",
       "type": "python",
       "request": "launch",
-      "module": "aimo",
+      "module": "mls",
       "args": [
         "train"
       ]

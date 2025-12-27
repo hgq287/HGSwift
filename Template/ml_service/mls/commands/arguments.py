@@ -3,8 +3,8 @@ from functools import partial
 from pathlib import Path
 from typing import Any, Optional, Union
 
-from aimo.commands.cli_options import AVAILABLE_CLI_OPTIONS
-from aimo.constants import DEFAULT_CONFIG
+from mls.commands.cli_options import AVAILABLE_CLI_OPTIONS
+from mls.constants import DEFAULT_CONFIG
 
 ARGS_COMMON = ["logfile", "version"]
 
@@ -15,7 +15,6 @@ NO_CONF_ALLOWED = []
 ARGS_WEBSERVER: list[str] = []
 
 ARGS_FILES_CONVERTER: list[str] = [
-    "convert_to_csv",
 ]
 
 
@@ -61,13 +60,13 @@ class Arguments:
 
         # Build main command
         self.parser = ArgumentParser(
-            prog="aimo",
-            description="A toolkit for developers.",
+            prog="mls",
+            description="MLS - Machine Learning Service",
         )
 
         self._build_args(optionlist=["version_main"], parser=self.parser)
 
-        from aimo.commands import (
+        from mls.commands import (
             start_training,
         )
 

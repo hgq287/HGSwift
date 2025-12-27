@@ -1,6 +1,6 @@
 function help() {
     echo "usage:"
-    echo "	-i,--install    Install aimo from scratch"
+    echo "	-i,--install    Install mls from scratch"
     echo "	-u,--update     Command git pull to update."
     echo "	-r,--reset      Hard reset your develop/main branch."
     echo "	-c,--config     Easy config generator (Will override your existing file)."

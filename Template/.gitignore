@@ -20,5 +20,5 @@ Carthage/
 .idea/
 
 # core_ai_model
-core_ai_model/__pycache__/*
-core_ai_model/.venv
+ml_service/__pycache__/*
+ml_service/.venv

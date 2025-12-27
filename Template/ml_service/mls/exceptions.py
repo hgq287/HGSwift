@@ -1,8 +1,8 @@
-class AimoException(Exception):
-    """Base exception for Aimo."""
+class MlsException(Exception):
+    """Base exception for Mls."""
 
 
-class OperationalException(AimoException):
+class OperationalException(MlsException):
     """Exception for operational errors."""
 
 
