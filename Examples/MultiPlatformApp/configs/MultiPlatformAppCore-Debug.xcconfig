@@ -1,0 +1,4 @@
+#include "Base.xcconfig"
+
+GENERATE_INFOPLIST_FILE = YES
+PRODUCT_BUNDLE_IDENTIFIER = com.examples.MultiPlatformApp-Core
