@@ -1,22 +1,21 @@
-# Multi-Platform Architecture with XcodeGen
+# Multi-Platform SwiftUI Architecture with XcodeGen
 
-This project serves as a practical blueprint for building Apple multi-platform applications using **XcodeGen**. It demonstrates a scalable approach to managing shared logic across iOS and macOS while maintaining a clean, modular architecture.
+This project serves as a practical blueprint for building Apple multi-platform applications using **SwiftUI** and **XcodeGen**. It demonstrates a scalable approach to managing a shared SwiftUI codebase across iOS and macOS while maintaining a clean, modular architecture.
 
 ### Architectural Overview
 
 The project is organized into three distinct layers to ensure separation of concerns and ease of maintenance:
 
-* **Application Layer**: Dedicated targets for `MultiPlatformApp-iOS` and `MultiPlatformApp-macOS`. These handle platform-specific UI, lifecycles, and entitlements.
-* **Bridge Layer (Shared Framework)**: A common framework that acts as a gateway, ensuring a unified API surface for the application targets.
-* **Core Layer (MultiPlatformAppCore)**: The low-level engine where external dependencies (**Alamofire** and **GRDB**) are integrated. This layer is designed to be purely platform-agnostic.
+* **Application Layer (SwiftUI)**: Dedicated targets for `MultiPlatformApp-iOS` and `MultiPlatformApp-macOS`. These handle platform-specific UI lifecycles using the SwiftUI App protocol.
+* **Bridge Layer (Shared UI & Logic)**: A common framework containing shared SwiftUI views and ViewModels, ensuring a unified user experience across the Apple ecosystem.
+* **Core Layer (MultiPlatformAppCore)**: The low-level engine where external dependencies (**Alamofire** and **GRDB**) are integrated. This layer is purely platform-agnostic and handles data persistence and networking.
 
 ### Technical Highlights
 
-* **Modular Dependency Management**: External packages (Alamofire, GRDB) are encapsulated within the Core framework. This prevents dependency "leakage" into the main app targets and simplifies the build graph.
-* **Unified Platform Support**: The Framework targets use a broad `SUPPORTED_PLATFORMS` configuration, enabling compatibility across iOS, macOS, tvOS, watchOS, and visionOS from a single source.
-* **Professional Configuration**: Uses `.xcconfig` files for Debug and Release environments to keep build settings out of the project file, making it easier to manage environment-specific variables.
-* **Integrated Testing Suite**: Each module (App, Shared, and Core) includes its own unit test bundle. Schemes are pre-configured to gather coverage data and provide immediate feedback.
-* **Native XcodeGen Features**: Demonstrates the use of `createIntermediateGroups`, `environmentVariables` for schemes, and direct `entitlements` path mapping.
+* **SwiftUI Multiplatform Ready**: Optimized for shared SwiftUI views, reducing the need for `#if os(iOS)` or `#if os(macOS)` checks by leveraging modular design.
+* **Modular Dependency Management**: External packages (Alamofire, GRDB) are encapsulated within the Core framework. This prevents dependency "leakage" and simplifies the build graph.
+* **Unified Platform Support**: Framework targets use a broad `SUPPORTED_PLATFORMS` configuration, enabling compatibility across iOS, macOS, tvOS, watchOS, and visionOS.
+* **Professional Configuration**: Uses `.xcconfig` files and integrated unit test bundles for every module, ensuring code quality and environment-specific management.
 
 ### How to Build
 
