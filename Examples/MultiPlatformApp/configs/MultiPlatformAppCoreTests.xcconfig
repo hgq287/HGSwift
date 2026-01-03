@@ -1,0 +1,4 @@
+#include "Base.xcconfig"
+API_ROOT= http:/$()/localhost:3005
+
+CODE_SIGN_IDENTITY = 

@@ -1,0 +1,3 @@
+#include "Base-iOS.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = com.examples.MultiPlatformApp

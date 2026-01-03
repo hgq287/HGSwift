@@ -1,0 +1,132 @@
+name: MultiPlatformApp
+options:
+  minimumXcodeGenVersion: 2.42.0
+  createIntermediateGroups: true
+packages:
+  Alamofire:
+    url: https://github.com/Alamofire/Alamofire.git
+    majorVersion: 5.10.2
+  GRDB:
+    url: https://github.com/groue/GRDB.swift.git
+    branch: master
+targets:
+  MultiPlatformApp-iOS:
+    platform: iOS 
+    type: application
+    sources:
+      - MultiPlatformApp/iOS
+    configFiles:
+      Debug: configs/MultiPlatformApp-iOS-Debug.xcconfig
+      Release: configs/MultiPlatformApp-iOS-Release.xcconfig
+    entitlements:
+      path: MultiPlatformApp/iOS/MultiPlatformApp.entitlements
+    dependencies:
+      - target: Shared
+    settings:
+      base:
+        INFOPLIST_FILE: MultiPlatformApp/iOS/Info.plist
+    scheme:
+      environmentVariables:
+        ENABLE_SIGNPOST: YES
+  #macOS application
+  MultiPlatformApp-macOS:
+    platform: macOS
+    type: application
+    sources:
+      - MultiPlatformApp/macOS
+    configFiles:
+      Debug: configs/MultiPlatformApp-macOS-Debug.xcconfig
+      Release: configs/MultiPlatformApp-macOS-Release.xcconfig
+    entitlements:
+      path: MultiPlatformApp/macOS/MultiPlatformApp.entitlements
+    settings:
+      base:
+        INFOPLIST_FILE: MultiPlatformApp/macOS/Info.plist
+    dependencies:
+      - target: Shared
+    scheme:
+      environmentVariables:
+        ENABLE_SIGNPOST: YES
+
+  # Framework Targets
+  Shared:
+    platform: macOS
+    type: framework
+    sources:
+      - Shared
+    configFiles:
+      Debug: configs/Shared-Debug.xcconfig
+      Release: configs/Shared-Release.xcconfig
+    dependencies:
+      - target: MultiPlatformAppCore
+    settings:
+      base:
+        SUPPORTED_PLATFORMS: "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator xros xrsimulator"
+  MultiPlatformAppCore:
+    platform: macOS
+    type: framework
+    sources:
+      - MultiPlatformAppCore
+    configFiles:
+      Debug: configs/MultiPlatformAppCore-Debug.xcconfig
+      Release: configs/MultiPlatformAppCore-Release.xcconfig
+    dependencies:
+      - package: Alamofire
+      - package: GRDB 
+    settings:
+      base:
+        SUPPORTED_PLATFORMS: "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator xros xrsimulator"
+      
+  #Test Targets
+  MultiPlatformApp-macOSTests:
+    platform: macOS
+    type: bundle.unit-test
+    configFiles:
+      Debug: configs/MultiPlatformApp-macOSTests.xcconfig
+    sources:
+      - Tests/MultiPlatformApp-macOSTests
+    dependencies:
+      - target: MultiPlatformApp-macOS
+    scheme:
+      testTargets:
+        - MultiPlatformApp-macOSTests
+      gatherCoverageData: true
+  MultiPlatformApp-iOSTests:
+    platform: macOS
+    type: bundle.unit-test
+    configFiles:
+      Debug: configs/MultiPlatformApp-iOSTests.xcconfig
+    sources:
+      - Tests/MultiPlatformApp-iOSTests
+    dependencies:
+      - target: MultiPlatformApp-iOS
+    scheme:
+      testTargets:
+        - MultiPlatformApp-iOSTests
+      gatherCoverageData: true
+  SharedTests:
+    platform: macOS
+    type: bundle.unit-test
+    configFiles:
+      Debug: configs/SharedTests.xcconfig
+    sources:
+      - Tests/SharedTests
+    dependencies:
+      - target: Shared
+    scheme:
+      testTargets:
+        - SharedTests
+      gatherCoverageData: true
+  MultiPlatformAppCoreTests:
+    platform: macOS
+    type: bundle.unit-test
+    configFiles:
+      Debug: configs/MultiPlatformAppCoreTests.xcconfig
+    sources:
+      - Tests/MultiPlatformAppCoreTests
+    dependencies:
+      - target: MultiPlatformAppCore
+    scheme:
+      testTargets:
+        - MultiPlatformAppCoreTests
+      gatherCoverageData: true
